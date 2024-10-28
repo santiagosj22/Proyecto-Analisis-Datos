@@ -228,7 +228,7 @@ def mapa():
     ax.set_ylabel('') 
     fig.tight_layout()
     # Mostrar el gráfico en la app de Streamlit
-    st.pyplot(fig, use_container_width=False)  # Asegúrate de que el gráfico use el ancho del contenedor
+    st.pyplot(fig,)  # Asegúrate de que el gráfico use el ancho del contenedor
 
 
 
@@ -316,7 +316,7 @@ def cobertura_desercion():
     plt.grid()
     #plt.show()
 
-    st.pyplot(plt, use_container_width=False)
+    st.pyplot(plt,)
 
 
 def cobertura_aprobacion():
@@ -355,7 +355,7 @@ def cobertura_aprobacion():
     plt.grid()
     #plt.show()
 
-    st.pyplot(plt, use_container_width=False)
+    st.pyplot(plt,)
 
 
 # Agregar contenido en las primeras columnas
