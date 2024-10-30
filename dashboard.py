@@ -342,12 +342,9 @@ def cobertura_aprobacion():
     # Segundo eje Y
     ax2 = ax1.twinx()  # Crea un segundo eje Y que comparte el mismo eje X
     ax2.plot(x, y2, 'b-', marker='x', label='Datos 2')  # Línea azul
-    ax2.set_ylabel('Deserción', color='b')
+    ax2.set_ylabel('Aprobación', color='b')
     ax2.tick_params(axis='y', labelcolor='b')  # Color de los ticks del eje Y
     #ax2.set_ylim(89, 92)
-    
-    
-    
     
     # Título y leyenda
     plt.title('% Cobertura vs Aprobación')
