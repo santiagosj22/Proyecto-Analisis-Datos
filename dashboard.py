@@ -194,6 +194,26 @@ st.sidebar.title("📈 Comportamiento Cobertura internet VS Educación en Colomb
 select_departamento = st.sidebar.selectbox("Selecciona un departamento", df_opciones_departamento)  # Seleccionar un departamento o dejar todos para afectar tablas y graficos
 select_año = st.sidebar.selectbox("Selecciona año",['2018','2019','2020','2021','2022','2023'])
 
+
+if select_departamento == "Todos":
+    total_hogares = df_completo['Hogares'].sum()
+else:
+    total_hogares = df_completo[df_completo['DEPARTAMENTO']==select_departamento]
+    total_hogares = total_hogares['Hogares'].sum()
+    
+if select_departamento == "Todos":
+    total_fijo = df_completo['No. ACCESOS FIJOS A INTERNET'].sum()
+else:
+    total_fijo = df_completo[df_completo['DEPARTAMENTO']==select_departamento]
+    total_fijo = total_fijo['No. ACCESOS FIJOS A INTERNET'].sum()
+    
+
+
+with st.container():
+    st.sidebar.metric(label="Número de Hogares", value=int(total_hogares), delta_color="normal")
+    st.sidebar.metric(label="Número de Acceso fijo", value=int(total_fijo), delta_color="normal")
+    st.sidebar.metric(label="% De Cobertura", value=f"{int((total_fijo/total_hogares)*100)} %", delta_color="normal")
+
 #------------------------Inicio Mapa--------------------------------------------------------------
 
 def mapa():
@@ -360,6 +380,7 @@ col1, col2 = st.columns([4, 1])  # Ajusta las proporciones según necesites
 with col1:
     tab1, tab2, tab3 = st.tabs(['Mapa','Relación','Datos'])
     with tab1:
+        
         col1_mapa, col2_mapa, = st.columns([1,3])
         with col1_mapa:
             if select_departamento == 'Todos':
