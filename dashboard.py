@@ -196,16 +196,25 @@ select_año = st.sidebar.selectbox("Selecciona año",['2018','2019','2020','2021
 
 
 if select_departamento == "Todos":
-    total_hogares = df_completo['Hogares'].sum()
+    total_hogares = df_completo[df_completo['AÑO'] == int(select_año)]['Hogares'].sum()
+       
 else:
-    total_hogares = df_completo[df_completo['DEPARTAMENTO']==select_departamento]
+    total_hogares = df_completo[
+        (df_completo['DEPARTAMENTO']==select_departamento) & (df_completo['AÑO']==int(select_año))
+    ]
     total_hogares = total_hogares['Hogares'].sum()
-    
+
 if select_departamento == "Todos":
-    total_fijo = df_completo['No. ACCESOS FIJOS A INTERNET'].sum()
+    total_fijo = df_completo[df_completo['AÑO'] == int(select_año)]['No. ACCESOS FIJOS A INTERNET'].sum()
+       
 else:
-    total_fijo = df_completo[df_completo['DEPARTAMENTO']==select_departamento]
+    total_fijo = df_completo[
+        (df_completo['DEPARTAMENTO']==select_departamento) & (df_completo['AÑO']==int(select_año))
+    ]
     total_fijo = total_fijo['No. ACCESOS FIJOS A INTERNET'].sum()
+    
+    
+
     
 
 
